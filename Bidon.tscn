@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/bidon.png" type="Texture" id=1]
+[ext_resource path="res://Item.tscn" type="PackedScene" id=2]
+
+[node name="Item" instance=ExtResource( 2 )]
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, -6 )
+texture = ExtResource( 1 )

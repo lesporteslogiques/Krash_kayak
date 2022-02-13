@@ -1,0 +1,125 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/bateau.png" type="Texture" id=1]
+[ext_resource path="res://assets/montage_wave.png" type="Texture" id=2]
+[ext_resource path="res://GwinMary.gd" type="Script" id=3]
+[ext_resource path="res://assets/sons/buzouille-1.wav" type="AudioStream" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 24 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 24 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 32, 24 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 32, 24 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="GwinMary" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite9" type="AnimatedSprite" parent="."]
+position = Vector2( 584, 121 )
+frames = SubResource( 5 )
+frame = 2
+playing = true
+
+[node name="AnimatedSprite10" type="AnimatedSprite" parent="."]
+position = Vector2( 578, 130 )
+frames = SubResource( 5 )
+frame = 3
+playing = true
+
+[node name="AnimatedSprite11" type="AnimatedSprite" parent="."]
+position = Vector2( 612, 130 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite12" type="AnimatedSprite" parent="."]
+position = Vector2( 647, 136 )
+frames = SubResource( 5 )
+frame = 3
+playing = true
+
+[node name="AnimatedSprite13" type="AnimatedSprite" parent="."]
+position = Vector2( 567, 139 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite14" type="AnimatedSprite" parent="."]
+position = Vector2( 603, 141 )
+frames = SubResource( 5 )
+frame = 2
+playing = true
+
+[node name="Bateau" type="Sprite" parent="."]
+position = Vector2( 368.694, 86.7016 )
+scale = Vector2( 0.701613, 0.701613 )
+texture = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 327.694, 147.702 )
+frames = SubResource( 5 )
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 359.694, 147.702 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
+position = Vector2( 391.694, 147.702 )
+frames = SubResource( 5 )
+frame = 2
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="."]
+position = Vector2( 423.694, 147.702 )
+frames = SubResource( 5 )
+frame = 3
+playing = true
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="."]
+position = Vector2( 455.694, 147.702 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="."]
+position = Vector2( 487.694, 147.702 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="."]
+position = Vector2( 519.694, 147.702 )
+frames = SubResource( 5 )
+playing = true
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="."]
+position = Vector2( 551.694, 147.702 )
+frames = SubResource( 5 )
+frame = 3
+playing = true
+
+[node name="Horn" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 389, 66 )
+stream = ExtResource( 4 )
+pitch_scale = 0.8

@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Bg0.tscn" type="PackedScene" id=2]
+[ext_resource path="res://QuaiBas.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Water.tscn" type="PackedScene" id=4]
+[ext_resource path="res://level.gd" type="Script" id=5]
+[ext_resource path="res://Bg1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://QuaiHaut.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/barredevie_on.png" type="Texture" id=8]
+[ext_resource path="res://assets/barredevie_off.png" type="Texture" id=9]
+[ext_resource path="res://assets/sons/musique-pendant jeu(farbretonne).wav" type="AudioStream" id=10]
+
+[node name="MainLevel" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+
+[node name="Bg2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 350, 39 )
+
+[node name="Bg1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -2 )
+
+[node name="QuaiHaut" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0, 100 )
+
+[node name="Lane1" type="CanvasLayer" parent="."]
+
+[node name="Water1" parent="Lane1" instance=ExtResource( 4 )]
+position = Vector2( 230, 112 )
+
+[node name="MidLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Player" parent="MidLayer" instance=ExtResource( 1 )]
+position = Vector2( 42, 158 )
+
+[node name="Lane5" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Water5" parent="Lane5" instance=ExtResource( 4 )]
+position = Vector2( 229, 185 )
+
+[node name="TopLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="QuaiBas" parent="TopLayer" instance=ExtResource( 3 )]
+position = Vector2( 0, 176 )
+z_index = 564
+z_as_relative = false
+
+[node name="Lifebar" type="TextureProgress" parent="TopLayer"]
+margin_left = 6.0
+margin_top = 8.0
+margin_right = 20.0
+margin_bottom = 93.0
+value = 100.0
+texture_under = ExtResource( 9 )
+texture_progress = ExtResource( 8 )
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}

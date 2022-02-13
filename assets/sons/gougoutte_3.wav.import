@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/gougoutte_3.wav-cefbabef08410530da2b6ecb48c059ed.sample"
+
+[deps]
+
+source_file="res://assets/sons/gougoutte_3.wav"
+dest_files=[ "res://.import/gougoutte_3.wav-cefbabef08410530da2b6ecb48c059ed.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
