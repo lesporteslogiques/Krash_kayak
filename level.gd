@@ -2,9 +2,11 @@ extends Node2D
 
 
 var timer = 0
+var boat_timer = 0
 onready var lanes = [$Lane1, $Lane2, $Lane3, $Lane4, $Lane5]
 onready var lifebar = $TopLayer/Lifebar
 onready var player = find_node("Player")
+var hurting_cooldown = 0.0
 
 var bouteille_builder = preload("res://Bouteille.tscn")
 var bidon_builder = preload("res://Bidon.tscn")
@@ -22,13 +24,27 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
 	timer += delta
-	GlobalVars.water_current = GlobalVars.start_water_current * (1 + timer*0.06)
-	player.get_node("AnimatedSprite").set_speed_scale(1 + timer*0.06) 
+	$TopLayer/LabelScore.text = str(floor(timer*10))
+	boat_timer += delta
+	GlobalVars.water_current = GlobalVars.start_water_current * (1 + timer*0.08 + boat_timer*0.05)
+	#player.get_node("AnimatedSprite").set_speed_scale(1 + boat_timer*0.06) 
 	
-	if not gwin_mary and timer > 20:
+	if hurting_cooldown > 0:
+		hurting_cooldown -= delta
+		if fmod(hurting_cooldown, 0.2) < 0.1:
+			player.visible = false
+		else:
+			player.visible = true
+	else:
+		player.visible = true
+	
+	
+	if not gwin_mary and boat_timer > 60:
+		print_debug("timer", timer)
 		gwin_mary = bateau_builder.instance()
 		gwin_mary.position.x = 0
 		$MidLayer.add_child(gwin_mary)
+		boat_timer = 0
 	
 	if gwin_mary != null:
 		if player.position.y < 158:	# Go to bottom lane
@@ -40,11 +56,11 @@ func _process(delta):
 			$MidLayer.remove_child(gwin_mary)
 			gwin_mary.queue_free()
 			gwin_mary = null
-			timer = 0
+			#boat_timer = 0
 			lifebar.value = 100
 			player.water_lane = 0
 	
-	if not gwin_mary and randf() < 0.01:
+	if not gwin_mary and randf() < 0.007 + timer*0.0001:
 		var new_item = null
 		if randf() < 0.5:
 			new_item = bidon_builder.instance()
@@ -55,7 +71,7 @@ func _process(delta):
 		new_item.water_lane = n_lane
 		$MidLayer.add_child(new_item)
 	
-	if not gwin_mary and randf() < 0.001:
+	if not gwin_mary and randf() < 0.0001 + timer*0.00002:
 		var ragondin = ragondin_builder.instance()
 		var n_lane = randi() % GlobalVars.num_lanes
 		ragondin.water_lane = n_lane
@@ -98,3 +114,6 @@ func _on_player_hit():
 		lifebar.value -= 25
 		if lifebar.value <= 0:
 			get_tree().change_scene("res://GameOver.tscn")
+		
+		if not hurting_cooldown > 0:
+			hurting_cooldown = 1.5

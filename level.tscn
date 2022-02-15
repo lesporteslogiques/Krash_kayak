@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bg0.tscn" type="PackedScene" id=2]
@@ -10,6 +10,12 @@
 [ext_resource path="res://assets/barredevie_on.png" type="Texture" id=8]
 [ext_resource path="res://assets/barredevie_off.png" type="Texture" id=9]
 [ext_resource path="res://assets/sons/musique-pendant jeu(farbretonne).wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/Fipps-Regular.otf" type="DynamicFontData" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+outline_size = 1
+font_data = ExtResource( 11 )
 
 [node name="MainLevel" type="Node2D"]
 script = ExtResource( 5 )
@@ -61,6 +67,21 @@ value = 100.0
 texture_under = ExtResource( 9 )
 texture_progress = ExtResource( 8 )
 fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelScore" type="Label" parent="TopLayer"]
+margin_left = 140.0
+margin_top = -2.0
+margin_right = 214.0
+margin_bottom = 38.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_fonts/font = SubResource( 1 )
+text = "Score"
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
