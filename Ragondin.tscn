@@ -33,6 +33,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -9.53674e-07, -1 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 flip_h = true
 
@@ -45,6 +46,7 @@ shape = SubResource( 4 )
 [node name="Squik" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource( 5 )
 pitch_scale = 10.0
+autoplay = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

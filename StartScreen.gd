@@ -17,4 +17,4 @@ func _process(delta):
 	$StartText/Label.rect_rotation = 3 * cos(7*timer)
 	
 	if Input.is_action_just_pressed("ui_accept"):
-		get_tree().change_scene("res://level.tscn")
+		get_tree().change_scene("res://Level.tscn")

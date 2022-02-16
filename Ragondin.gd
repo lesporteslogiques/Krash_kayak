@@ -22,7 +22,7 @@ func _process(delta):
 	if position.x > 230:
 		queue_free()
 	
-	move_local_x(delta * -4 * GlobalVars.water_current)
+	move_local_x(delta * -2 * GlobalVars.water_current)
 
 
 func _on_Area2D_body_entered(body):
